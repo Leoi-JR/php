@@ -1,29 +1,30 @@
 create database itcast charset utf8;
 
 use itcast;
-create table student(
+create table singer(
     id int primary key auto_increment not null,
     name char(10),
-    s_code char(5),
-    s_group int(2),
+    s_group char(5),
+    s_song char(20),
     s_score int(3)
 );
 
-insert into student values
-(default, "张三","Y1001",1,84),
-(default, "李四","Y1002",6,83),
-(default, "范冰冰","Y1003",1,86),
-(default, "薛之谦","Y1004",3,90),
-(default, "李克勤","Y1005",6,94),
-(default, "周深","Y1006",5,97),
-(default, "周杰伦","Y1007",6,87),
-(default, "邓紫棋","Y1008",1,80),
-(default, "孙楠","Y1009",3,75),
-(default, "张信哲","Y1010",4,72),
-(default, "太一","Y1011",1,88),
-(default, "容祖儿","Y1011",2,99),
-(default, "希林娜依高","Y1012",6,100),
-(default, "李玟","Y1013",1,90),
-(default, "陈小春","Y1014",3,91),
-(default, "GAI","Y1015",6,81),
-(default, "小鬼","Y1016",3,82);
+insert into singer values
+(default, "孙楠","B1","《风往北吹》",84),
+(default, "张云龙","B1","《All I Ask of You》",83),
+(default, "李玟","B2","《刀马旦》",86),
+(default, "王凯琳","B2","《过完冬季》",90),
+(default, "常石磊","B3","《我我》",94),
+(default, "王源","B3","《可乐》",97),
+(default, "陈小春","B4","《没那种命个》",87),
+(default, "GAI","B4","《神啊 救救我》",80),
+(default, "张信哲","A1","《太想爱你》",75),
+(default, "太一","A1","《难以抗拒你容颜》",72),
+(default, "容祖儿","A2","《挥着翅膀的女孩》",88),
+(default, "希莉娜依高","A2","《不如跳舞》",99),
+(default, "钟镇涛","A3","《只要你过得比我好》",100),
+(default, "冯提莫","A3","《后会有期》",90),
+(default, "黄绮珊","A4","《是否爱过我》",91),
+(default, "张碧晨","A4","《光辉岁月》",81),
+(default, "李克勤","C1","《富士山下》",100),
+(default, "周深","C1","《富士山下》",100);

@@ -20,7 +20,7 @@ final class Db{
         $this->charset = $config["charset"];
         $this->connectDb(); //连接数据库
         $this->selectDB(); //选择数据库
-        $this->setCharset(); //设置字符集
+        // $this->setCharset(); //设置字符集
     }
     //私有的克隆方法：防止类外clone对象
     private function __clone(){}
@@ -52,7 +52,7 @@ final class Db{
 
     //私有的设置字符集
     private function setCharset(){
-        $this->exec("SET NAMES {$this->$charset}");
+        $this->exec("SET singer {$this->$charset}");
     }
 
     //公共的执行SQL语句的方法：insert,update,delete,set,create,drop等
@@ -65,7 +65,11 @@ final class Db{
             die("该方法不能执行SELECT语句");
         }
         //执行SQL语句，并返回布尔值
-        return mysqli_query($this->link, $sql);
+        $res = mysqli_query($this->link, $sql);
+        if(!$res){
+            echo mysqli_error($this->link);
+        }
+        return $res;
     }
 
     //私有的执行SQL语句的方法：select
@@ -110,10 +114,12 @@ final class Db{
         );
 
         //循环从结果集中取出所有记录，并存入一个新数组中
-        while($row=mysqli_fetch_array($result, $types[$type])){
+        while(@$row=mysqli_fetch_array($result, $types[$type])){
             $arrs[] = $row;
         }
-
+        if(!isset($arrs)){
+            return array();
+        }
         //返回二维数组
         return $arrs;
     }
