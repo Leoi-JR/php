@@ -146,7 +146,7 @@ function changePage(page,query_para,...param){
       return
     }
     else{
-      page=param[0]-1;
+      page=parseInt(param[0])-1;
     }
   }
   else if(page==-2){
@@ -154,13 +154,13 @@ function changePage(page,query_para,...param){
       return
     }
     else{
-      page=param[0]+1;
+      page=parseInt(param[0])+1;
     }
   }
-  if(query_para.indexOf("page")!=-1){
+  if(query_para && query_para.indexOf("page")!=-1){
     query_para = "&"+query_para.replace(/page=\d+&*/g, "")
   }
-  else{
+  else if(query_para){
     query_para = "&"+query_para
   }
   if(query_para.length==1){

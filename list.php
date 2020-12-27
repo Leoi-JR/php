@@ -8,7 +8,7 @@ $dis_num = 10;
 //获取记录数
 $sql = "SELECT * FROM singer";
 
-list("s"=>$s, "e"=>$e, "g"=>$g)=$_GET;
+@list("s"=>$s, "e"=>$e, "g"=>$g)=$_GET;
 if(!isset($s) && !isset($e)){
 }
 elseif(!isset($s)){
@@ -35,7 +35,6 @@ $sql .= " ORDER BY id DESC LIMIT $start, $dis_num";
 $arrs = $db->fetchAll($sql, 3);
 
 $query_para = $_SERVER["QUERY_STRING"];
-echo $query_para;
 ?>
 
 
@@ -150,7 +149,7 @@ echo $query_para;
       <div class="row justify-content-md-center">
         <nav aria-label="Page navigation example">
           <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="javascript:void(0);" onClick="changePage(-1), '<?php echo $query_para;?>', <?php echo $cur_page;?>, <?php echo $total_pages;?>">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);" onClick="changePage(-1, '<?php echo $query_para;?>', <?php echo $cur_page;?>, <?php echo $total_pages;?>)">Previous</a></li>
             <?php if($total_pages<7): ?>
                     <?php for($i=0; $i<$total_pages; $i++): ?>
                       <li class="page-item"><a class="page-link" href="javascript:void(0);" onClick="changePage(<?php echo $i+1;?>, '<?php echo $query_para;?>')"><?php echo $i+1;?></a></li>
@@ -179,7 +178,7 @@ echo $query_para;
                     <li class="page-item"><a class="page-link" href="javascript:void(0);" onClick="changePage(<?php echo $i+1;?>, '<?php echo $query_para;?>')"><?php echo $total_pages;?></a></li>
               <?php endif; ?>
             <?php endif; ?>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);" onClick="changePage(-2), '<?php echo $query_para;?>', <?php echo $cur_page;?>, <?php echo $total_pages;?>">Next</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);" onClick="changePage(-2, '<?php echo $query_para;?>', <?php echo $cur_page;?>, <?php echo $total_pages;?>)">Next</a></li>
           </ul>
         </nav>
       </div>
